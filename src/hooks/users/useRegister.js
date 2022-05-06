@@ -1,17 +1,10 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import Swal from "sweetalert2";
-
-const INSERT_USER_QUERY = gql`
-  mutation MyMutation($object: users_insert_input!) {
-    insert_users_one(object: $object) {
-      id
-    }
-  }
-`;
+import { INSERT_USER_MUTATION } from "../../graphql/mutation";
 
 export default function useInsertUser() {
   const [insertUser, { loading: loadingUser, error: errorUser }] = useMutation(
-    INSERT_USER_QUERY,
+    INSERT_USER_MUTATION,
     {
       onCompleted: () => {
         Swal.fire({

@@ -1,22 +1,40 @@
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
+import { GET_NEWS_BY_ID } from "../../graphql/query";
 import Container from "../Container";
+import Footer from "../Footer";
 import Navbar from "../Navbar";
+import Spinner from "../SubmitButton/Spinner";
+import NewsContent from "./NewsContent";
 
 export default function News() {
+  let params = useParams();
+  const { id } = params;
+
+  const { data, loading } = useQuery(GET_NEWS_BY_ID, {
+    variables: {
+      id,
+    },
+  });
+
   return (
     <>
       <Navbar />
-      <div className=" w-full bg-red-500 py-20">
+      <section className="w-full pt-20">
         <Container>
-          <div className="my-5 py-5">
-            <h1 className="my-3 text-5xl font-bold text-gray-100">
-              Berita Trending
-            </h1>
-            <div className="grid grid-cols-3">
-              <img src="" alt="" />
-            </div>
+          <div>
+            {loading ? (
+              <div className="my-28 flex w-full items-center justify-center rounded-lg bg-white p-12">
+                <Spinner />
+                <p className="text-lg">Loading ...</p>
+              </div>
+            ) : (
+              <NewsContent data={data} />
+            )}
           </div>
         </Container>
-      </div>
+      </section>
+      <Footer />
     </>
   );
 }

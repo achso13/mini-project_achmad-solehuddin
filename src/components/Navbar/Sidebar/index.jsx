@@ -1,9 +1,12 @@
+import { useQuery } from "@apollo/client";
 import { NavLink } from "react-router-dom";
+import { GET_CATEGORIES } from "../../../graphql/query";
 import Container from "../../Container";
 import SearchBar from "../SearchBar";
 
 export default function Sidebar(props) {
   const { active } = props;
+  const { data, loading } = useQuery(GET_CATEGORIES);
   return (
     <nav
       className={
@@ -18,27 +21,14 @@ export default function Sidebar(props) {
           <li className="my-5 hover:text-red-500">
             <NavLink to="/">Home</NavLink>
           </li>
-          <li className="my-5 hover:text-red-500">
-            <NavLink to="/kategori/terbaru">Terbaru</NavLink>
-          </li>
-          <li className="my-5 hover:text-red-500">
-            <NavLink to="/kategori/nasional">Nasional</NavLink>
-          </li>
-          <li className="my-5 hover:text-red-500">
-            <NavLink to="/kategori/internasional">Internasional</NavLink>
-          </li>
-          <li className="my-5 hover:text-red-500">
-            <NavLink to="/kategori/olahraga">Olahraga</NavLink>
-          </li>
-          <li className="my-5 hover:text-red-500">
-            <NavLink to="/kategori/ekonomi">Ekonomi</NavLink>
-          </li>
-          <li className="my-5 hover:text-red-500">
-            <NavLink to="/kategori/hiburan">Hiburan</NavLink>
-          </li>
-          <li className="my-5 hover:text-red-500">
-            <NavLink to="/kategori/teknologi">Teknologi</NavLink>
-          </li>
+          {!loading &&
+            data.categories.map((item) => (
+              <li className="my-5 hover:text-red-500" key={item.id}>
+                <NavLink to={"/kategori/" + item.category}>
+                  {item.category}
+                </NavLink>
+              </li>
+            ))}
         </ul>
       </Container>
     </nav>

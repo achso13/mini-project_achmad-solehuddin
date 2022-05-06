@@ -16,11 +16,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full bg-white py-4">
+      <nav className="fixed top-0 w-full bg-white py-4 shadow-sm">
         <Container>
-          <div className="flex items-center md:justify-between">
+          <div className="flex items-center lg:justify-between">
             <button
-              className="flex-grow-0 text-2xl text-gray-700 hover:text-gray-900 md:hidden"
+              className="flex-grow-0 text-2xl text-gray-700 hover:text-gray-900 lg:hidden"
               onClick={() => handleClick()}
             >
               <HiMenuAlt1 />
@@ -29,25 +29,25 @@ export default function Navbar() {
             <div className="flex flex-grow items-center gap-6">
               <Link
                 to="/"
-                className="flex-grow text-center text-3xl font-bold text-red-500 md:flex-grow-0"
+                className="flex-grow text-center text-3xl font-bold text-red-500 lg:flex-grow-0"
               >
                 <span className="font-normal">BER</span>
                 KABAR
               </Link>
-              <ul className="flex-start hidden flex-grow-0 gap-12 md:flex">
+              <ul className="flex-start hidden flex-grow-0 gap-12 lg:flex">
                 <li className="my-5 hover:text-red-500">
                   <NavLink to="/">Home</NavLink>
                 </li>
                 <li className="my-5 hover:text-red-500">
-                  <NavLink to="/latest">Terbaru</NavLink>
+                  <Dropdown />
                 </li>
                 <li className="my-5 hover:text-red-500">
-                  <Dropdown />
+                  <NavLink to="/admin/berita">Admin</NavLink>
                 </li>
               </ul>
             </div>
 
-            <div className="hidden items-center gap-4 md:flex">
+            <div className="hidden items-center gap-4 lg:flex">
               <SearchBar />
               <Link
                 to="/register"
