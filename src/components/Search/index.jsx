@@ -35,7 +35,6 @@ export default function Search() {
             {loading ? (
               <div className="my-8 flex items-center justify-center">
                 <Spinner />
-                <p className="text-lg">Loading ...</p>
               </div>
             ) : (
               <>

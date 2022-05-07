@@ -10,6 +10,7 @@ import EditModal from "../EditModal";
 export default function TableData({ data, index, deleteNews }) {
   const { title, description, category, writer, imageurl, viewcount, id } =
     data;
+
   const handleDelete = (id) => {
     const fileUrl = data.imageurl;
     const fileRef = ref(storage, fileUrl);
@@ -47,14 +48,14 @@ export default function TableData({ data, index, deleteNews }) {
           : "odd border-b odd:bg-white even:bg-gray-50"
       }
     >
-      <td className="w-2/12 px-6 py-4">{title}</td>
-      <td className="w-4/12 px-6 py-4">
+      <td className="py-4 md:w-2/12 md:px-4">{title}</td>
+      <td className="py-4 md:w-4/12 md:px-4">
         {description.slice(0, 100) + (description.length > 100 ? "..." : "")}
       </td>
-      <td className="w-1/12 px-6 py-4">{category.category}</td>
-      <td className="w-2/12 px-6 py-4">{writer}</td>
-      <td className="w-1/12 px-6 py-4">{viewcount}</td>
-      <td className="w-2/12 px-6 py-4">
+      <td className="py-4 md:w-1/12 md:px-4">{category.category}</td>
+      <td className="py-4 md:w-2/12 md:px-4">{writer}</td>
+      <td className="py-4 md:w-1/12 md:px-4">{viewcount}</td>
+      <td className="py-4 md:w-2/12 md:px-4">
         <img
           src={imageurl}
           className="h-20 w-20 object-cover"

@@ -28,9 +28,8 @@ export default function Category() {
       <Container>
         <div>
           {loading ? (
-            <div className="my-8 flex items-center justify-center">
+            <div className="my-36 flex items-center justify-center">
               <Spinner />
-              <p className="text-lg">Loading ...</p>
             </div>
           ) : (
             <>

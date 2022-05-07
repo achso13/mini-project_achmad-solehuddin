@@ -88,7 +88,6 @@ export default function NewsAdmin() {
           {loading || loadingDelete ? (
             <div className="my-8 flex items-center justify-center">
               <Spinner />
-              <p className="text-lg">Loading ...</p>
             </div>
           ) : (
             <Table data={data || []} deleteNews={deleteNews} />

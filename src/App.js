@@ -7,6 +7,7 @@ import NewsAdmin from "./components/NewsAdmin";
 import Search from "./components/Search";
 import Category from "./components/Category";
 import News from "./components/News";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/search/:keyword" element={<Search />} />
         <Route path="/kategori/:category" element={<Category />} />
         <Route path="/admin/berita" element={<NewsAdmin />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

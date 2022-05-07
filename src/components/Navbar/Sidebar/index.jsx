@@ -29,6 +29,9 @@ export default function Sidebar(props) {
                 </NavLink>
               </li>
             ))}
+          <li className="my-5 hover:text-red-500">
+            <NavLink to="/admin/berita">Admin</NavLink>
+          </li>
         </ul>
       </Container>
     </nav>

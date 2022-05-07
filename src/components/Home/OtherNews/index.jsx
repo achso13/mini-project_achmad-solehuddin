@@ -21,7 +21,6 @@ export default function OtherNews() {
       {loading ? (
         <div className="my-28 flex w-full items-center justify-center p-12 text-white">
           <Spinner />
-          <p className="text-lg">Loading ...</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">

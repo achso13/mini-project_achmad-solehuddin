@@ -26,7 +26,6 @@ export default function News() {
             {loading ? (
               <div className="my-28 flex w-full items-center justify-center rounded-lg bg-white p-12">
                 <Spinner />
-                <p className="text-lg">Loading ...</p>
               </div>
             ) : (
               <NewsContent data={data} />

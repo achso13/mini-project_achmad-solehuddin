@@ -29,7 +29,6 @@ export default function Banner() {
           {loading ? (
             <div className="my-28 flex w-full items-center justify-center p-12 text-white">
               <Spinner />
-              <p className="text-lg">Loading ...</p>
             </div>
           ) : (
             <div className="my-8 rounded-lg bg-white">
