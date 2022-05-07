@@ -1,17 +1,16 @@
 import React from 'react';
-import { FaRegUser, FaRegClock, FaRegFolderOpen, FaRegEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
+import { FaRegUser, FaRegClock, FaRegFolderOpen, FaRegEye } from 'react-icons/fa';
 import { dateFormat } from '../../../utils/helpers/dateFormat';
 
-export default function NewsCard({ news }) {
-  const { id, title, description, createdat, category, writer, imageurl, viewcount } = news;
+export default function OtherNewsCard({ news }) {
+  const { title, imageurl, category, id, description, createdat, writer, viewcount } = news;
 
   return (
-    <div className="my-8 rounded-lg bg-white">
-      <div className="flex flex-col items-center md:flex-row">
-        <div className="h-52 w-full md:w-60">
-          <img className=" h-full w-full rounded-lg object-cover" alt="thumbnail" src={imageurl} />
-        </div>
+    <div className="mt-4 mb-16 rounded-lg bg-white">
+      <div className="flex flex-col items-center gap-2 ">
+        <img className="h-60 w-full rounded-lg object-cover " src={imageurl} alt="thumbnail" />
 
         <div className="w-full py-3 px-8">
           <div className="my-4">
@@ -25,8 +24,8 @@ export default function NewsCard({ news }) {
               </Link>
             </div>
           </div>
-          <p>{description.slice(0, 200) + (description.length > 200 ? '...' : '')}</p>
-          <div className="my-3 flex flex-col gap-3 text-gray-600 md:flex-row md:items-center">
+          <p>{description.slice(0, 50) + (description.length > 50 ? '...' : '')}</p>
+          <div className="my-3 flex flex-col gap-3 text-gray-600 ">
             <div className="flex items-center gap-2">
               <FaRegClock />
               <span className="text-sm">{dateFormat(createdat)}</span>

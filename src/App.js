@@ -1,13 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Register from "./components/Register";
-import NewsAdmin from "./components/NewsAdmin";
-import Search from "./components/Search";
-import Category from "./components/Category";
-import News from "./components/News";
-import NotFound from "./components/NotFound";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Register from './pages/Register';
+import NewsAdmin from './pages/NewsAdmin';
+import Search from './pages/Search';
+import Category from './pages/Category';
+import News from './pages/News';
+import NotFound from './pages/NotFound';
+import AdminRoute from './routes/AdminRoute';
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
         <Route path="/news/:id" element={<News />} />
         <Route path="/search/:keyword" element={<Search />} />
         <Route path="/kategori/:category" element={<Category />} />
-        <Route path="/admin/berita" element={<NewsAdmin />} />
+        <Route element={<AdminRoute />}>
+          <Route path="/admin/berita" element={<NewsAdmin />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

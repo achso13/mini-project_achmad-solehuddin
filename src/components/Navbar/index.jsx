@@ -1,14 +1,16 @@
-import Container from "../Container";
-import SearchBar from "./SearchBar";
-import { useState } from "react";
+import Container from '../Container';
+import SearchBar from './SearchBar';
+import { useState, useEffect } from 'react';
 
-import { HiMenuAlt1 } from "react-icons/hi";
-import Sidebar from "./Sidebar";
-import Dropdown from "./Drowpdown";
-import { Link, NavLink } from "react-router-dom";
+import { HiMenuAlt1 } from 'react-icons/hi';
+import Sidebar from './Sidebar';
+import Dropdown from './Drowpdown';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { auth } from '../../utils/helpers/auth';
 
 export default function Navbar() {
   const [sidebarToggle, setSidebarToggle] = useState(false);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setSidebarToggle(!sidebarToggle);
@@ -41,26 +43,39 @@ export default function Navbar() {
                 <li className="my-5 hover:text-red-500">
                   <Dropdown />
                 </li>
-                <li className="my-5 hover:text-red-500">
-                  <NavLink to="/admin/berita">Admin</NavLink>
-                </li>
+                {auth.isAdmin() && (
+                  <li className="my-5 hover:text-red-500">
+                    <NavLink to="/admin/berita">Admin</NavLink>
+                  </li>
+                )}
               </ul>
             </div>
 
             <div className="hidden items-center gap-4 lg:flex">
               <SearchBar />
-              <Link
-                to="/register"
-                className="rounded border-2 border-red-500 bg-red-500 py-1 px-2 text-white hover:bg-red-600"
-              >
-                Daftar
-              </Link>
-              <Link
-                to="/login"
-                className="rounded border-2 border-red-500 py-1 px-2 text-red-500 hover:bg-red-600 hover:text-white"
-              >
-                Masuk
-              </Link>
+              {auth.isAuthenticated() ? (
+                <button
+                  className="rounded border-2 border-red-500 bg-red-500 py-1 px-2 text-white hover:bg-red-600"
+                  onClick={() => auth.logout(navigate)}
+                >
+                  Logout
+                </button>
+              ) : (
+                <>
+                  <Link
+                    to="/register"
+                    className="rounded border-2 border-red-500 bg-red-500 py-1 px-2 text-white hover:bg-red-600"
+                  >
+                    Daftar
+                  </Link>
+                  <Link
+                    to="/login"
+                    className="rounded border-2 border-red-500 py-1 px-2 text-red-500 hover:bg-red-600 hover:text-white"
+                  >
+                    Masuk
+                  </Link>
+                </>
+              )}
             </div>
           </div>
           <Sidebar active={sidebarToggle} />

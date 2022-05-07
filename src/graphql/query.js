@@ -1,14 +1,22 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_USER_LOGIN = gql`
   query getUserLogin($_eq: String!, $_eq1: String!) {
     users(where: { email: { _eq: $_eq }, password: { _eq: $_eq1 } }) {
       id
+      level
+    }
+  }
+`;
+
+export const GET_USER_BY_ID = gql`
+  query getUser($id: Int = 10) {
+    users_by_pk(id: $id) {
       email
-      password
       imageurl
       level
       name
+      id
     }
   }
 `;
@@ -63,10 +71,7 @@ export const GET_NEWS_BY_KEYWORD = gql`
 
 export const GET_NEWS_BY_CATEGORY = gql`
   query getNewsByCategory($_eq: String!) {
-    news(
-      order_by: { createdat: desc }
-      where: { category: { category: { _eq: $_eq } } }
-    ) {
+    news(order_by: { createdat: desc }, where: { category: { category: { _eq: $_eq } } }) {
       id
       description
       createdat
@@ -124,6 +129,21 @@ export const GET_CATEGORIES = gql`
     categories {
       category
       id
+    }
+  }
+`;
+
+export const GET_COMMENTS = gql`
+  query getComments($_eq: Int!) {
+    comment(where: { id_news: { _eq: $_eq } }, order_by: { createdat: desc }) {
+      id
+      id_user
+      comment
+      createdat
+      user {
+        name
+        imageurl
+      }
     }
   }
 `;

@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const INSERT_USER_MUTATION = gql`
   mutation insertUser($object: users_insert_input!) {
@@ -50,11 +50,24 @@ export const DELETE_NEWS_MUTATION = gql`
 
 export const INCREASE_VIEWCOUNT_MUTATION = gql`
   mutation increaseViewcount($id: Int!, $viewcount: Int!) {
-    update_news_by_pk(
-      pk_columns: { id: $id }
-      _set: { viewcount: $viewcount }
-    ) {
+    update_news_by_pk(pk_columns: { id: $id }, _set: { viewcount: $viewcount }) {
       viewcount
+    }
+  }
+`;
+
+export const INSERT_COMMENTS_MUTATION = gql`
+  mutation insertComments($comment: String!, $id_news: Int!, $id_user: Int!) {
+    insert_comment_one(object: { comment: $comment, id_news: $id_news, id_user: $id_user }) {
+      id
+    }
+  }
+`;
+
+export const DELETE_COMMENTS_MUTATION = gql`
+  mutation deleteComments($id: Int!) {
+    delete_comment_by_pk(id: $id) {
+      id
     }
   }
 `;
