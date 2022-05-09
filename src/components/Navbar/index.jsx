@@ -1,16 +1,25 @@
 import Container from '../Container';
 import SearchBar from './SearchBar';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { HiMenuAlt1 } from 'react-icons/hi';
 import Sidebar from './Sidebar';
 import Dropdown from './Drowpdown';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { auth } from '../../utils/helpers/auth';
+import { useQuery } from '@apollo/client';
+import { GET_USER_BY_ID } from '../../graphql/query';
+import Avatar from './Avatar';
 
 export default function Navbar() {
   const [sidebarToggle, setSidebarToggle] = useState(false);
-  const navigate = useNavigate();
+
+  const { data, loading } = useQuery(GET_USER_BY_ID, {
+    variables: {
+      id: auth.getUserId(),
+    },
+    skip: !auth.isAuthenticated(),
+  });
 
   const handleClick = () => {
     setSidebarToggle(!sidebarToggle);
@@ -54,12 +63,7 @@ export default function Navbar() {
             <div className="hidden items-center gap-4 lg:flex">
               <SearchBar />
               {auth.isAuthenticated() ? (
-                <button
-                  className="rounded border-2 border-red-500 bg-red-500 py-1 px-2 text-white hover:bg-red-600"
-                  onClick={() => auth.logout(navigate)}
-                >
-                  Logout
-                </button>
+                <>{!loading && <Avatar data={data} />}</>
               ) : (
                 <>
                   <Link
@@ -78,7 +82,7 @@ export default function Navbar() {
               )}
             </div>
           </div>
-          <Sidebar active={sidebarToggle} />
+          {!loading && <Sidebar user={data} active={sidebarToggle} />}
         </Container>
       </nav>
     </>

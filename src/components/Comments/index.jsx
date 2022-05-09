@@ -25,7 +25,7 @@ export default function Comments({ data }) {
     onCompleted: () => {
       Swal.fire({
         title: 'Success',
-        text: 'Comment deleted',
+        text: 'Komentar berhasil dihapus',
         icon: 'success',
       });
     },
@@ -36,7 +36,7 @@ export default function Comments({ data }) {
     onCompleted: () => {
       Swal.fire({
         title: 'Success',
-        text: 'Comment has been added',
+        text: 'Komentar berhasil ditambahkan',
         icon: 'success',
       });
     },
@@ -52,7 +52,7 @@ export default function Comments({ data }) {
     const id_news = id;
     const id_user = auth.getUserId();
     if (!comment) {
-      Swal.fire('Oops...', 'Please enter your comment', 'error');
+      Swal.fire('Oops...', 'Isi dulu komentarmu ...', 'error');
     } else {
       insertComment({
         variables: {

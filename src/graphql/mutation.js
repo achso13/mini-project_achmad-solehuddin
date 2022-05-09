@@ -71,3 +71,11 @@ export const DELETE_COMMENTS_MUTATION = gql`
     }
   }
 `;
+
+export const UPDATE_PROFILE_PHOTO_MUTATION = gql`
+  mutation updateProfilePhoto($id: Int = 10, $imageurl: String = "") {
+    update_users_by_pk(pk_columns: { id: $id }, _set: { imageurl: $imageurl }) {
+      id
+    }
+  }
+`;

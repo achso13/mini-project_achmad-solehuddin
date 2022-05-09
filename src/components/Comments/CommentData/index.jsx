@@ -33,14 +33,16 @@ export default function CommentData({ data, deleteComment }) {
         <img
           src={user['imageurl'] ? user['imageurl'] : avatar}
           alt="avatar"
-          className="w-12 rounded-full"
+          className="h-12 w-12 rounded-full object-cover"
         />
 
         <div>
-          <p className="text-lg font-medium">{user['name']}</p>
+          <p className="text-lg font-medium">
+            {user['name']}{' '}
+            <span className="text-sm font-normal text-gray-600">{dateFormat(createdat)}</span>
+          </p>
           <p className="my-2 text-base">{comment}</p>
           <div className="text-sm font-normal text-gray-600">
-            <p>{dateFormat(createdat)}</p>
             {id_user === Number(auth.getUserId()) && (
               <button className="hover:text-red-500" onClick={() => handleDelete(id)}>
                 Hapus Komentar

@@ -10,7 +10,7 @@ export const GET_USER_LOGIN = gql`
 `;
 
 export const GET_USER_BY_ID = gql`
-  query getUser($id: Int = 10) {
+  query getUser($id: Int!) {
     users_by_pk(id: $id) {
       email
       imageurl

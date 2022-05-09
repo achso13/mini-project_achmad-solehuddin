@@ -9,6 +9,8 @@ import Category from './pages/Category';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
 import AdminRoute from './routes/AdminRoute';
+import PrivateRoute from './routes/PrivateRoute';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
         <Route path="/kategori/:category" element={<Category />} />
         <Route element={<AdminRoute />}>
           <Route path="/admin/berita" element={<NewsAdmin />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
