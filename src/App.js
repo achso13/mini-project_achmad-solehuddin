@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/news/:id" element={<News />} />
-        <Route path="/search/:keyword" element={<Search />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/kategori/:category" element={<Category />} />
         <Route element={<AdminRoute />}>
           <Route path="/admin/berita" element={<NewsAdmin />} />

@@ -1,25 +1,27 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useSubscription } from '@apollo/client';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { DELETE_COMMENTS_MUTATION, INSERT_COMMENTS_MUTATION } from '../../graphql/mutation';
-import { GET_COMMENTS } from '../../graphql/query';
+import { GET_COMMENTS_SUBSCRIPTION } from '../../graphql/subscription';
 import { auth } from '../../utils/helpers/auth';
 import SubmitButton from '../SubmitButton';
 import Spinner from '../SubmitButton/Spinner';
-
 import CommentData from './CommentData';
 
 export default function Comments({ data }) {
-  const [comment, setComment] = useState(null);
+  const [comment, setComment] = useState('');
 
   const { id } = data.news_by_pk;
 
-  const { data: dataComments, loading: loadingComments } = useQuery(GET_COMMENTS, {
-    variables: {
-      _eq: id,
-    },
-  });
+  const { data: dataComments, loading: loadingComments } = useSubscription(
+    GET_COMMENTS_SUBSCRIPTION,
+    {
+      variables: {
+        _eq: id,
+      },
+    }
+  );
 
   const [deleteComment] = useMutation(DELETE_COMMENTS_MUTATION, {
     onCompleted: () => {
@@ -29,7 +31,6 @@ export default function Comments({ data }) {
         icon: 'success',
       });
     },
-    refetchQueries: [{ query: GET_COMMENTS, variables: { _eq: id } }],
   });
 
   const [insertComment, { loading: loadingInsert }] = useMutation(INSERT_COMMENTS_MUTATION, {
@@ -40,7 +41,6 @@ export default function Comments({ data }) {
         icon: 'success',
       });
     },
-    refetchQueries: [{ query: GET_COMMENTS, variables: { _eq: id } }],
   });
 
   const handleOnChange = (e) => {

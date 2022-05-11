@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { GET_NEWS_BY_KEYWORD } from '../../graphql/query';
 import Container from '../../components/Container';
 import Navbar from '../../components/Navbar';
@@ -9,8 +8,9 @@ import NewsList from '../../components/NewsList';
 import Footer from '../../components/Footer';
 
 export default function Search() {
-  let params = useParams();
-  const { keyword } = params;
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const keyword = urlParams.get('keyword');
 
   const { data, loading } = useQuery(GET_NEWS_BY_KEYWORD, {
     variables: {

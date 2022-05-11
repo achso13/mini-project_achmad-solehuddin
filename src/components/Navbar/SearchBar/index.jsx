@@ -1,29 +1,22 @@
-import { useState } from "react";
-import * as Ai from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import * as Ai from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchBar() {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     setSearch(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/search/${search}`);
-  };
-
   return (
     <form
-      onSubmit={handleSubmit}
+      action="/search"
+      method="get"
       className="m-0 flex items-center gap-2 rounded-lg border-2 border-gray-200 bg-gray-50 py-1 px-2 focus:ring-2 focus:ring-red-500"
     >
-      <button
-        type="submit"
-        className="rounded-full text-xl text-gray-500 hover:text-red-500"
-      >
+      <button type="submit" className="rounded-full text-xl text-gray-500 hover:text-red-500">
         <Ai.AiOutlineSearch />
       </button>
       <input
