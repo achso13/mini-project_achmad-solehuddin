@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaRegUser, FaRegClock, FaRegFolderOpen, FaRegEye } from 'react-icons/fa';
-import { dateFormat } from '../../../utils/helpers/dateFormat';
+import { dateFormat } from '../../../utils/helpers';
 
 export default function OtherNewsCard({ news }) {
   const { title, imageurl, category, id, description, createdat, writer, viewcount } = news;

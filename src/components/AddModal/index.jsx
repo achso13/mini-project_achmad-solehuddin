@@ -10,6 +10,7 @@ import { INSERT_NEWS_MUTATION } from '../../graphql/mutation';
 import { GET_NEWS } from '../../graphql/query';
 import Swal from 'sweetalert2';
 import { AiOutlineClose } from 'react-icons/ai';
+import { CONST } from '../../common/constants';
 
 export default function AddModal({ categories }) {
   const baseData = {
@@ -79,10 +80,6 @@ export default function AddModal({ categories }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const imageExt = image['name'].split('.').pop();
-    const allowedExt = ['jpg', 'jpeg', 'png', 'gif'];
-
-    console.log(allowedExt.includes(imageExt));
 
     if (!data.title || !data.description || !data.category || !data.writer) {
       Swal.fire({
@@ -96,12 +93,21 @@ export default function AddModal({ categories }) {
         title: 'Gagal',
         text: 'Harap pilih gambar terlebih dahulu',
       });
-    } else if (!allowedExt.includes(imageExt)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Gagal',
-        text: 'File harus berupa gambar dengan ekstensi jpg, png, jpeg, atau gif',
-      });
+    } else if (image) {
+      const imageExt = image['name'].split('.').pop();
+
+      if (!CONST.allowedExt.includes(imageExt)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'File harus berupa gambar dengan ekstensi jpg, png, jpeg, atau gif',
+        });
+      } else {
+        uploadData(image);
+        setData(baseData);
+        setImage(null);
+        imageRef.current.value = '';
+      }
     } else {
       uploadData(image);
       setData(baseData);

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { DELETE_COMMENTS_MUTATION, INSERT_COMMENTS_MUTATION } from '../../graphql/mutation';
 import { GET_COMMENTS_SUBSCRIPTION } from '../../graphql/subscription';
-import { auth } from '../../utils/helpers/auth';
+import { auth } from '../../utils/helpers';
 import SubmitButton from '../SubmitButton';
 import Spinner from '../SubmitButton/Spinner';
 import CommentData from './CommentData';

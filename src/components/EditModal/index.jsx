@@ -11,6 +11,7 @@ import { GET_CATEGORIES, GET_NEWS } from '../../graphql/query';
 import Swal from 'sweetalert2';
 import { FaEdit } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
+import { CONST } from '../../common/constants';
 
 export default function EditModal({ data }) {
   const { data: dataCategories, loading: loadingCategories } = useQuery(GET_CATEGORIES);
@@ -102,7 +103,6 @@ export default function EditModal({ data }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const allowedExt = ['jpg', 'jpeg', 'png', 'gif'];
 
     if (!editData.title || !editData.description || !editData.category || !editData.writer) {
       Swal.fire({
@@ -113,7 +113,7 @@ export default function EditModal({ data }) {
     } else if (image) {
       const imageExt = image['name'].split('.').pop();
 
-      if (!allowedExt.includes(imageExt)) {
+      if (!CONST.allowedExt.includes(imageExt)) {
         Swal.fire({
           icon: 'error',
           title: 'Gagal',

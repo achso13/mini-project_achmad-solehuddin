@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { GET_USER_LOGIN } from '../../graphql/query';
-import { auth } from '../../utils/helpers/auth';
+import { auth } from '../../utils/helpers';
 import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
 import SubmitButton from '../../components/SubmitButton';
+import MainLayout from '../../layouts/MainLayout';
+import Helmet from 'react-helmet';
+import { CONST } from '../../common/constants';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -60,8 +61,10 @@ export default function Login() {
   };
 
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      <Helmet>
+        <title>{CONST.title} - Login</title>
+      </Helmet>
       <section className="w-full pt-20">
         <Container>
           <div className="my-4 mx-auto w-full rounded-md bg-white py-16 px-8 shadow md:my-20 md:w-96">
@@ -97,7 +100,6 @@ export default function Login() {
           </div>
         </Container>
       </section>
-      <Footer />
-    </>
+    </MainLayout>
   );
 }

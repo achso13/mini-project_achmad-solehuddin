@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { INSERT_USER_MUTATION } from '../../graphql/mutation';
 import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
 import SubmitButton from '../../components/SubmitButton';
+import MainLayout from '../../layouts/MainLayout';
+import Helmet from 'react-helmet';
+import { CONST } from '../../common/constants';
 
 export default function Register() {
   const [data, setData] = useState({
@@ -70,8 +71,10 @@ export default function Register() {
   };
 
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      <Helmet>
+        <title>{CONST.title} - Daftar</title>
+      </Helmet>
       <section className="w-full pt-20">
         <Container>
           <div className="my-4 mx-auto w-full rounded-md bg-white py-16 px-8 shadow md:my-20 md:w-96">
@@ -116,7 +119,6 @@ export default function Register() {
           </div>
         </Container>
       </section>
-      <Footer />
-    </>
+    </MainLayout>
   );
 }

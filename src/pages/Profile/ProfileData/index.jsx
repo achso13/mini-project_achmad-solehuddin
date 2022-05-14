@@ -8,7 +8,7 @@ import { UPDATE_PROFILE_PHOTO_MUTATION } from '../../../graphql/mutation';
 import SubmitButton from '../../../components/SubmitButton';
 import { useMutation } from '@apollo/client';
 import { GET_USER_BY_ID } from '../../../graphql/query';
-import { auth } from '../../../utils/helpers/auth';
+import { auth } from '../../../utils/helpers';
 
 export default function ProfileData({ data }) {
   const [image, setImage] = useState(null);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../../utils/helpers/auth';
+import { auth } from '../../../utils/helpers';
 
 import UserAvatar from '../../../assets/img/default-profile.jpg';
 

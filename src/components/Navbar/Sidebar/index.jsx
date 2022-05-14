@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { GET_CATEGORIES } from '../../../graphql/query';
-import { auth } from '../../../utils/helpers/auth';
+import { auth } from '../../../utils/helpers';
 import Container from '../../Container';
 import SearchBar from '../SearchBar';
 import UserAvatar from '../../../assets/img/default-profile.jpg';

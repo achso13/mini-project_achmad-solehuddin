@@ -6,7 +6,7 @@ import { HiMenuAlt1 } from 'react-icons/hi';
 import Sidebar from './Sidebar';
 import Dropdown from './Drowpdown';
 import { Link, NavLink } from 'react-router-dom';
-import { auth } from '../../utils/helpers/auth';
+import { auth } from '../../utils/helpers';
 import { useQuery } from '@apollo/client';
 import { GET_USER_BY_ID } from '../../graphql/query';
 import Avatar from './Avatar';

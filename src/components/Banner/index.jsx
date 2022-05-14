@@ -6,7 +6,7 @@ import Spinner from '../SubmitButton/Spinner';
 import { FaRegUser, FaRegClock, FaRegFolderOpen, FaRegEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { dateFormat } from '../../utils/helpers/dateFormat';
+import { dateFormat } from '../../utils/helpers';
 
 export default function Banner() {
   const { data, loading, refetch } = useQuery(GET_LATEST_NEWS, {

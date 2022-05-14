@@ -1,16 +1,16 @@
 import { useQuery } from '@apollo/client';
-import { useEffect } from 'react';
 import { GET_NEWS_BY_KEYWORD } from '../../graphql/query';
 import Container from '../../components/Container';
-import Navbar from '../../components/Navbar';
 import Spinner from '../../components/SubmitButton/Spinner';
 import NewsList from '../../components/NewsList';
-import Footer from '../../components/Footer';
+import { useSearchParams } from 'react-router-dom';
+import MainLayout from '../../layouts/MainLayout';
+import { CONST } from '../../common/constants';
+import Helmet from 'react-helmet';
 
 export default function Search() {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const keyword = urlParams.get('keyword');
+  let [searchParams] = useSearchParams();
+  const keyword = searchParams.get('keyword');
 
   const { data, loading } = useQuery(GET_NEWS_BY_KEYWORD, {
     variables: {
@@ -18,13 +18,13 @@ export default function Search() {
     },
   });
 
-  useEffect(() => {
-    document.title = `Search ${keyword}`;
-  }, [keyword]);
-
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      <Helmet>
+        <title>
+          {CONST.title} - Pencarian {keyword}
+        </title>
+      </Helmet>
       <div className="py-20">
         <Container>
           <div className="my-5 py-5">
@@ -47,7 +47,6 @@ export default function Search() {
           </div>
         </Container>
       </div>
-      <Footer />
-    </>
+    </MainLayout>
   );
 }

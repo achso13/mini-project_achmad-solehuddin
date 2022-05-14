@@ -1,12 +1,15 @@
+import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
+import { CONST } from '../../common/constants';
 import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
+import MainLayout from '../../layouts/MainLayout';
 
 export default function NotFound() {
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      <Helmet>
+        <title>{CONST.title} - Halaman tidak ditemukan</title>
+      </Helmet>
       <Container>
         <div className="mx-auto mt-48 mb-36 text-center">
           <div className="mt-8 mb-12">
@@ -21,7 +24,6 @@ export default function NotFound() {
           </Link>
         </div>
       </Container>
-      <Footer />
-    </>
+    </MainLayout>
   );
 }

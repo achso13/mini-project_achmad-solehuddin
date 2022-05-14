@@ -1,8 +1,8 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import avatar from '../../../assets/img/default-profile.jpg';
-import { auth } from '../../../utils/helpers/auth';
-import { dateFormat } from '../../../utils/helpers/dateFormat';
+import { auth } from '../../../utils/helpers';
+import { dateFormat } from '../../../utils/helpers';
 
 export default function CommentData({ data, deleteComment }) {
   const { id, user, comment, createdat, id_user } = data;

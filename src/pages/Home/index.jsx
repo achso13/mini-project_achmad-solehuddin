@@ -1,15 +1,17 @@
-import Navbar from '../../components/Navbar';
+import Helmet from 'react-helmet';
+import { CONST } from '../../common/constants';
 import Banner from '../../components/Banner';
 import OtherNews from '../../components/OtherNews';
-import Footer from '../../components/Footer';
+import MainLayout from '../../layouts/MainLayout';
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      <Helmet>
+        <title>{CONST.title}</title>
+      </Helmet>
       <Banner />
       <OtherNews />
-      <Footer />
-    </>
+    </MainLayout>
   );
 }

@@ -2,11 +2,12 @@ import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { GET_NEWS_BY_CATEGORY } from '../../graphql/query';
 import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
 import NewsList from '../../components/NewsList';
 import Spinner from '../../components/SubmitButton/Spinner';
 import CategoryBanner from '../../components/CategoryBanner';
+import MainLayout from '../../layouts/MainLayout';
+import Helmet from 'react-helmet';
+import { CONST } from '../../common/constants';
 
 export default function Category() {
   let params = useParams();
@@ -19,8 +20,12 @@ export default function Category() {
   });
 
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      <Helmet>
+        <title>
+          {CONST.title} - Berita {category}
+        </title>
+      </Helmet>
       <CategoryBanner category={category} />
 
       <Container>
@@ -36,7 +41,6 @@ export default function Category() {
           )}
         </div>
       </Container>
-      <Footer />
-    </>
+    </MainLayout>
   );
 }

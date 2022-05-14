@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { FaRegUser, FaRegClock, FaRegFolderOpen, FaRegEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { INCREASE_VIEWCOUNT_MUTATION } from '../../graphql/mutation';
-import { dateFormat } from '../../utils/helpers/dateFormat';
+import { dateFormat } from '../../utils/helpers';
 
 export default function NewsDetail({ data }) {
   const { id, title, description, createdat, imageurl, writer, viewcount, category } =

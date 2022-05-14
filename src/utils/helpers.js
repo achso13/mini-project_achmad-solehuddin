@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-export const auth = {
+const auth = {
   setLogin: (data) => {
     Cookies.set('loginId', data.id);
     Cookies.set('loginLevel', data.level);
@@ -32,3 +32,8 @@ export const auth = {
     navigate('/login');
   },
 };
+
+const dateFormat = (date) => {
+  return new Date(date).toLocaleString();
+};
+export { auth, dateFormat };

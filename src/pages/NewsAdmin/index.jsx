@@ -5,12 +5,13 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { useMutation, useQuery } from '@apollo/client';
 import { DELETE_NEWS_MUTATION } from '../../graphql/mutation';
 import { GET_CATEGORIES, GET_NEWS, GET_NEWS_BY_KEYWORD } from '../../graphql/query';
-import Navbar from '../../components/Navbar';
 import Container from '../../components/Container';
 import AddModal from '../../components/AddModal';
 import Spinner from '../../components/SubmitButton/Spinner';
 import Table from '../../components/Table';
-import Footer from '../../components/Footer';
+import MainLayout from '../../layouts/MainLayout';
+import { CONST } from '../../common/constants';
+import Helmet from 'react-helmet';
 
 export default function NewsAdmin() {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -51,8 +52,10 @@ export default function NewsAdmin() {
   };
 
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      <Helmet>
+        <title>{CONST.title} - Admin</title>
+      </Helmet>
       <section className="my-32 w-full bg-white py-12">
         <Container>
           <div className="flex items-center justify-between">
@@ -82,7 +85,6 @@ export default function NewsAdmin() {
           )}
         </Container>
       </section>
-      <Footer />
-    </>
+    </MainLayout>
   );
 }
