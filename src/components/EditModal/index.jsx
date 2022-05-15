@@ -27,7 +27,13 @@ export default function EditModal({ data }) {
 
   const [modalToggle, setModalToggle] = useState(false);
   const [image, setImage] = useState(null);
-  const [editData, setEditData] = useState(baseData);
+  const [editData, setEditData] = useState({
+    id,
+    title: '',
+    description: '',
+    category: 1,
+    writer: '',
+  });
   const imageRef = useRef();
 
   const [updateNews, { loading: loadingUpdate }] = useMutation(UPDATE_NEWS_MUTATION, {
@@ -43,6 +49,7 @@ export default function EditModal({ data }) {
 
   const handleClick = () => {
     setModalToggle(!modalToggle);
+    setEditData(baseData);
   };
 
   const handleOnChange = (e) => {
@@ -225,7 +232,7 @@ export default function EditModal({ data }) {
                 <label className="mb-2 block text-sm font-medium text-gray-900" htmlFor="image">
                   Upload foto<span className="text-red-500">*</span>
                 </label>
-                <img className="my-4 w-40" src={imageurl} alt="berita" />
+                <img className="my-4 h-40 w-40" src={imageurl} alt="berita" />
                 <input
                   id="image"
                   type="file"

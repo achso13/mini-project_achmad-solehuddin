@@ -8,7 +8,7 @@ import NotFound from '../NotFound';
 import { GET_NEWS_BY_ID_SUBSCRIPTION } from '../../graphql/subscription';
 import MainLayout from '../../layouts/MainLayout';
 import { CONST } from '../../common/constants';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 export default function News() {
   let params = useParams();

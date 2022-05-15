@@ -6,7 +6,7 @@ import NewsList from '../../components/NewsList';
 import { useSearchParams } from 'react-router-dom';
 import MainLayout from '../../layouts/MainLayout';
 import { CONST } from '../../common/constants';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 export default function Search() {
   let [searchParams] = useSearchParams();
@@ -21,9 +21,7 @@ export default function Search() {
   return (
     <MainLayout>
       <Helmet>
-        <title>
-          {CONST.title} - Pencarian {keyword}
-        </title>
+        <title>{CONST.title} - Pencarian</title>
       </Helmet>
       <div className="py-20">
         <Container>

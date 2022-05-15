@@ -1,4 +1,4 @@
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { CONST } from '../../common/constants';
 import Banner from '../../components/Banner';
 import OtherNews from '../../components/OtherNews';

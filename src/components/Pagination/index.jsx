@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 export default function Pagination({
   currentPage,
@@ -30,7 +30,7 @@ export default function Pagination({
       }
     }
     setPaginationGroup(pagination);
-  }, [currentPage]);
+  }, [currentPage, pageLimit, pages]);
 
   return (
     <ul className="my-4 flex justify-center">

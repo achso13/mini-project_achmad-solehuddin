@@ -10,10 +10,14 @@ export default function SearchBar() {
     setSearch(e.target.value);
   };
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search?keyword=${search}`);
+  };
+
   return (
     <form
-      action="/search"
-      method="get"
+      onSubmit={handleOnSubmit}
       className="m-0 flex items-center gap-2 rounded-lg border-2 border-gray-200 bg-gray-50 py-1 px-2 focus:ring-2 focus:ring-red-500"
     >
       <button type="submit" className="rounded-full text-xl text-gray-500 hover:text-red-500">

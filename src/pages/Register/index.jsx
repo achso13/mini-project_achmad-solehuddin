@@ -6,7 +6,7 @@ import { INSERT_USER_MUTATION } from '../../graphql/mutation';
 import Container from '../../components/Container';
 import SubmitButton from '../../components/SubmitButton';
 import MainLayout from '../../layouts/MainLayout';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { CONST } from '../../common/constants';
 
 export default function Register() {
