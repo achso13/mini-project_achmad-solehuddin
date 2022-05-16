@@ -10,13 +10,16 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-center gap-4">
           <p>Connect with us</p>
           <div className="flex gap-5 text-xl">
-            <Link className="hover:text-red-500">
+            <Link to="https://www.facebook.com/" className="hover:text-red-500">
               <FaFacebookSquare />
             </Link>
-            <Link className="hover:text-red-500">
+            <Link to="https://www.instagram.com/" className="hover:text-red-500">
               <FaInstagram />
             </Link>
-            <Link className="hover:text-red-500">
+            <Link
+              to="https://www.linkedin.com/in/achmad-solehuddin-4b145218b/"
+              className="hover:text-red-500"
+            >
               <FaLinkedin />
             </Link>
           </div>
