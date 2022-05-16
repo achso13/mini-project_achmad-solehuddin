@@ -5,7 +5,7 @@ import Spinner from '../../components/SubmitButton/Spinner';
 import NewsList from '../../components/NewsList';
 import { useSearchParams } from 'react-router-dom';
 import MainLayout from '../../layouts/MainLayout';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 import { Helmet } from 'react-helmet-async';
 
 export default function Search() {

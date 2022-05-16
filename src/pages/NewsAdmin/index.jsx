@@ -10,7 +10,7 @@ import AddModal from '../../components/AddModal';
 import Spinner from '../../components/SubmitButton/Spinner';
 import Table from '../../components/Table';
 import MainLayout from '../../layouts/MainLayout';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 import { Helmet } from 'react-helmet-async';
 
 export default function NewsAdmin() {

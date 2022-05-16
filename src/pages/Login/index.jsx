@@ -8,7 +8,7 @@ import Container from '../../components/Container';
 import SubmitButton from '../../components/SubmitButton';
 import MainLayout from '../../layouts/MainLayout';
 import { Helmet } from 'react-helmet-async';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 
 export default function Login() {
   const navigate = useNavigate();

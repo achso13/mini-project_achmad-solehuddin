@@ -10,7 +10,7 @@ import { INSERT_NEWS_MUTATION } from '../../graphql/mutation';
 import { GET_NEWS } from '../../graphql/query';
 import Swal from 'sweetalert2';
 import { AiOutlineClose } from 'react-icons/ai';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 
 export default function AddModal({ categories }) {
   const baseData = {

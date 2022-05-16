@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CONST } from '../common/constants';
+import { CONST } from '../utils/constants';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 

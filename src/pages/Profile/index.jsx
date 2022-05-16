@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 import Container from '../../components/Container';
 
 import Spinner from '../../components/SubmitButton/Spinner';

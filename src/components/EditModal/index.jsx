@@ -11,7 +11,7 @@ import { GET_CATEGORIES, GET_NEWS } from '../../graphql/query';
 import Swal from 'sweetalert2';
 import { FaEdit } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 
 export default function EditModal({ data }) {
   const { data: dataCategories, loading: loadingCategories } = useQuery(GET_CATEGORIES);

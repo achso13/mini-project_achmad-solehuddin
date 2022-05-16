@@ -7,7 +7,7 @@ import Spinner from '../../components/SubmitButton/Spinner';
 import CategoryBanner from '../../components/CategoryBanner';
 import MainLayout from '../../layouts/MainLayout';
 import { Helmet } from 'react-helmet-async';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 
 export default function Category() {
   let params = useParams();

@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { CONST } from '../../common/constants';
+import { CONST } from '../../utils/constants';
 import Container from '../../components/Container';
 import MainLayout from '../../layouts/MainLayout';
 
