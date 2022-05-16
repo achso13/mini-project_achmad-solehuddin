@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../Container';
 import { FaFacebookSquare, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -10,18 +9,18 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-center gap-4">
           <p>Connect with us</p>
           <div className="flex gap-5 text-xl">
-            <Link to="https://www.facebook.com/" className="hover:text-red-500">
+            <a href="https://www.facebook.com/" className="hover:text-red-500">
               <FaFacebookSquare />
-            </Link>
-            <Link to="https://www.instagram.com/" className="hover:text-red-500">
+            </a>
+            <a href="https://www.instagram.com/" className="hover:text-red-500">
               <FaInstagram />
-            </Link>
-            <Link
-              to="https://www.linkedin.com/in/achmad-solehuddin-4b145218b/"
+            </a>
+            <a
+              href="https://www.linkedin.com/in/achmad-solehuddin-4b145218b/"
               className="hover:text-red-500"
             >
               <FaLinkedin />
-            </Link>
+            </a>
           </div>
 
           <p className="text-center text-sm">
