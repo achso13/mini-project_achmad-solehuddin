@@ -15,7 +15,7 @@ jobs:
         run: |
           npm ci && npm run build
           cd build
-          echo "<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^index\.html$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteCond %{REQUEST_FILENAME} !-l\nRewriteRule . /index.html [L]\n</IfModule>" > .htaccess
+          echo -e "<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^index\.html$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteCond %{REQUEST_FILENAME} !-l\nRewriteRule . /index.html [L]\n</IfModule>" > .htaccess
       - name: Execute Deployment
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
