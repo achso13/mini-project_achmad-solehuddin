@@ -1,0 +1,28 @@
+name: Deploy to cPanel
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Dependencies and Build
+        run: npm ci && npm run build
+      - name: Setup URL
+        run: |
+          cd /build
+          echo "<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^index\.html$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteCond %{REQUEST_FILENAME} !-l\nRewriteRule . /index.html [L]\n</IfModule>" > .htaccess
+      - name: Execute Deployment
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+            server: ${{secrets.FTP_HOST}}
+            username: ${{secrets.FTP_USERNAME}}
+            password: ${{secrets.FTP_PASSWORD}}
+            port: ${{secrets.FTP_PORT}}
+            server-dir: ${{secrets.SERVER_DIRECTORY}}
+            local-dir: ${{secrets.LOCAL_DIRECTORY}}
